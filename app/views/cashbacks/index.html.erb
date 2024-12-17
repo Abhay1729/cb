@@ -1,0 +1,14 @@
+<p style="color: green"><%= notice %></p>
+
+<h1>Cashbacks</h1>
+
+<div id="cashbacks">
+  <% @cashbacks.each do |cashback| %>
+    <%= render cashback %>
+    <p>
+      <%= link_to "Show this cashback", cashback %>
+    </p>
+  <% end %>
+</div>
+
+<%= link_to "New cashback", new_cashback_path %>
