@@ -7,7 +7,7 @@ class UserRestaurantLevel < ApplicationRecord
 
   def upgrade_level
     levels = restaurant_level.restaurant.restaurant_levels
-    user_expenditure = user.orders.where(status: 'completed', created_at: (Date.today-TIME_PERIOD)..Date.today).sum :amount
+    user_expenditure = user.orders.where(restaurant: restaurant_level.restaurant, status: 'completed', created_at: (Date.today-TIME_PERIOD)..Date.today).sum :amount
     old_diff = user_expenditure - restaurant_level.threshold.to_f
     new_level = restaurant_level
     levels.each do |level|
